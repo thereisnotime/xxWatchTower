@@ -15,6 +15,17 @@ Easy oneliner for installation with curl:
 ```sh
 curl -L https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh | sh
 ``` 
+### Automation ###
+The script can be configured manually or by passing exactly 6 arguments to it:
+```sh
+./xxWatchTower.sh SCRIPTFILENAME EMAILFROM EMAILTO SMTPSERVER SMTPUSERNAME SMTPPASSWORD
+```
+SCRIPTFILENAME - the full location where you want the script to be installed.
+EMAILFROM - best to use the SMTPUSERNAME one to avoid spam filtering.
+EMAILTO - the email which will receive the notifications.
+SMTPSERVER - for sending the notifications.
+SMTPUSERNAME - for authorization.
+SMTPPASSWORD - for authorization.
 
 ### Uninstall ###
 To remove xxWatchTower from all shells use:
