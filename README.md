@@ -28,7 +28,7 @@ SMTPUSERNAME - for authorization.
 SMTPPASSWORD - for authorization.
 
 ### Uninstall ###
-To remove xxWatchTower from all shells use:
+To remove xxWatchTower use:
 ```sh
 tmp=$(cat "/etc/pam.d/sudo")
 tmp2=$(echo $tmp | grep -o -P '(?<=pam_exec.so ).*(?=#ENDXXWATCHTOWER)')
