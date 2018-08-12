@@ -17,7 +17,7 @@ curl -L https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh
 ``` 
 
 ### Dependencies ###
-Currently the script depends only on the package manager and few internals, which get installed with the script:
+Currently the script depends only on the package manager (apt) and few internals, which get installed with the script:
 ```sh
 sendemail
 ````
