@@ -2,7 +2,7 @@
 # HEREDOC string containing the aliases
 # xxWatchTower
 # Oneliner:
-# curl -L https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh | sh
+# bash <(curl -s https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatchTower.sh)
 ################################
 #### Install dependencies
 apt-get install -y sendemail
