@@ -8,12 +8,12 @@ Linux SSH and TTY monitoring &amp; alerting tool. It sends email each time someb
 
 Easy oneliner for installation with wget:
 ```sh
-wget https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh -O /tmp/xxWatchTower.sh && chmod +x /tmp/xxWatchTower.sh && /tmp/xxWatchTower.sh && rm /tmp/xxWatchTower.sh
+wget https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatchTower.sh -O /tmp/xxWatchTower.sh && chmod +x /tmp/xxWatchTower.sh && /tmp/xxWatchTower.sh && rm /tmp/xxWatchTower.sh
 ``` 
 
 Easy oneliner for installation with curl:
 ```sh
-curl -L https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh | sh
+curl -L https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatchTower.sh | sh
 ``` 
 
 ### Dependencies ###
@@ -39,7 +39,7 @@ The script can be configured manually or by passing exactly 6 arguments to it:
 ```
 Or download + install + configure oneliner:
 ```sh
-wget https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh -O /tmp/xxWatchTower.sh && chmod +x /tmp/xxWatchTower.sh && /tmp/xxWatchTower.sh SCRIPTFILENAME EMAILFROM EMAILTO SMTPSERVER SMTPUSERNAME SMTPPASSWORD && rm /tmp/xxWatchTower.sh
+wget https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatchTower.sh -O /tmp/xxWatchTower.sh && chmod +x /tmp/xxWatchTower.sh && /tmp/xxWatchTower.sh SCRIPTFILENAME EMAILFROM EMAILTO SMTPSERVER SMTPUSERNAME SMTPPASSWORD && rm /tmp/xxWatchTower.sh
 ```
 SCRIPTFILENAME - the full location where you want the script to be installed.
 EMAILFROM - best to use the SMTPUSERNAME one to avoid spam filtering.
