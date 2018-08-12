@@ -15,10 +15,31 @@ Easy oneliner for installation with curl:
 ```sh
 curl -L https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh | sh
 ``` 
+
+### Dependencies ###
+Currently the script depends only on the package manager and few internals, which get installed with the script:
+```sh
+sendemail
+````
+
+### Compatability ###
+The should work on most Linus distributions and has been tested on the following:
+```sh
+Debian 7 x64
+Debian 7 x86
+Debian 8 x64
+Debian 8 x86
+Debian 9 x64
+``` 
+
 ### Automation ###
 The script can be configured manually or by passing exactly 6 arguments to it:
 ```sh
 ./xxWatchTower.sh SCRIPTFILENAME EMAILFROM EMAILTO SMTPSERVER SMTPUSERNAME SMTPPASSWORD
+```
+Or download + install + configure oneliner:
+```sh
+wget https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh -O /tmp/xxWatchTower.sh && chmod +x /tmp/xxWatchTower.sh && /tmp/xxWatchTower.sh SCRIPTFILENAME EMAILFROM EMAILTO SMTPSERVER SMTPUSERNAME SMTPPASSWORD && rm /tmp/xxWatchTower.sh
 ```
 SCRIPTFILENAME - the full location where you want the script to be installed.
 EMAILFROM - best to use the SMTPUSERNAME one to avoid spam filtering.
@@ -26,9 +47,10 @@ EMAILTO - the email which will receive the notifications.
 SMTPSERVER - for sending the notifications.
 SMTPUSERNAME - for authorization.
 SMTPPASSWORD - for authorization.
+* Note: Do not forget to use the right quotes if your input has special symbols.
 
 ### Uninstall ###
-To remove xxWatchTower use:
+To remove xxWatchTower use the following commands:
 ```sh
 tmp=$(cat "/etc/pam.d/sudo")
 tmp2=$(echo $tmp | grep -o -P '(?<=pam_exec.so ).*(?=#ENDXXWATCHTOWER)')
