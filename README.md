@@ -13,7 +13,7 @@ wget https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatch
 
 Easy oneliner for installation with curl:
 ```sh
-curl -L https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatchTower.sh | sh
+bash <(curl -s https://raw.githubusercontent.com/thereisnotime/xxWatchTower/master/xxWatchTower.sh)
 ``` 
 
 ### Dependencies ###
