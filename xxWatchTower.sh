@@ -46,7 +46,7 @@ SCRIPTBASE=$(cat <<'END_HEREDOC'
 #XXWATCHTOWER
 ##################
 # xxWatchTower
-# v1.2
+# v1.3
 ##################
 #### Configuration
 EMAILFROM="EMAILFROMPLACEHOLDER"
@@ -56,7 +56,7 @@ SMTPUSERNAME="SMTPUSERNAMEPLACEHOLDER"
 SMTPPASSWORD='SMTPPASSWORDPLACEHOLDER'
 [ "$PAM_TYPE" = "open_session" ] || exit 0
 #### Send email
-sendemail -f $EMAILFROM -t $EMAILTO -u "[New SSH/TTY Login]: $PAM_USER@`hostname`" -s $SMTPSERVER -m "Host: `hostname`\nUser: $PAM_USER\nRuser: $PAM_RUSER\nRhost: $PAM_RHOST\nService: $PAM_SERVICE\nType: $PAM_TTY\nTimestmap: `date +%s`\nDate: `date`\nServer: `uname -a`\nLogins: `w`" -v -o message-charset="utf-8" -o username=$SMTPUSERNAME -o password=$SMTPPASSWORD -q >/dev/null 2>/dev/null &
+sendemail -f $EMAILFROM -t $EMAILTO -u "[New SSH/TTY Login]: $PAM_USER@`hostname`" -s $SMTPSERVER -m "Host: `hostname`\nUser: $PAM_USER\nRuser: $PAM_RUSER\nRhost: $PAM_RHOST\nService: $PAM_SERVICE\nType: $PAM_TTY\nTimestmap: `date +%s`\nDate: `date`\nServer: `uname -a`\nLogins: \n`w`" -v -o message-charset="utf-8" -o username=$SMTPUSERNAME -o password=$SMTPPASSWORD -q >/dev/null 2>/dev/null &
 #ENDXXWATCHTOWER
 END_HEREDOC
 )
