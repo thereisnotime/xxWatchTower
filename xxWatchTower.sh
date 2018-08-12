@@ -4,10 +4,9 @@
 # Oneliner:
 # curl -L https://github.com/thereisnotime/xxWatchTower/raw/master/xxWatchTower.sh | sh
 ################################
-# Install dependencies
+#### Install dependencies
 apt-get install -y sendemail
-# Input
-
+#### Input
 if [ "$#" -eq 6 ]; then
     SCRIPTFILENAME="$1"
     EMAILFROM="$2"
@@ -34,9 +33,8 @@ if [ "$#" != 0 ] && [ "$#" != 6 ]; then
     echo "Invalid arguments ($#). Use all 6 or do not use arguments at all."
     exit 0
 fi
-
+#### Variables
 declare -a FILEARRAY=("/etc/pam.d/common-session" "/etc/pam.d/sudo")
-
 PAMRULE=$(cat <<'END_HEREDOC'
 #XXWATCHTOWER
 session    optional     pam_exec.so SCRIPTFILENAMEPLACEHOLDER
@@ -48,7 +46,7 @@ SCRIPTBASE=$(cat <<'END_HEREDOC'
 #XXWATCHTOWER
 ##################
 # xxWatchTower
-# v1.1
+# v1.2
 ##################
 #### Configuration
 EMAILFROM="EMAILFROMPLACEHOLDER"
@@ -63,12 +61,10 @@ sendemail -f $EMAILFROM -t $EMAILTO -u "[New SSH/TTY Login]: $PAM_USER@`hostname
 END_HEREDOC
 )
 
-# PAM Rule
+#### PAM Rule
 for CURRENTFILE in "${FILEARRAY[@]}"
 do
-    if [ ! -f "$CURRENTFILE" ]; then
-        touch "$CURRENTFILE"
-    fi
+    if [ ! -f "$CURRENTFILE" ]; then touch "$CURRENTFILE"; fi
     if grep -q "#XXWATCHTOWER" "$CURRENTFILE"; then
         # Remove old rule
         echo "Old rule detected in: $CURRENTFILE"
@@ -82,12 +78,12 @@ do
     echo "$PAMRULE" >> "$CURRENTFILE"
     sed -i "s|SCRIPTFILENAMEPLACEHOLDER|$SCRIPTFILENAME|g" "$CURRENTFILE"
 done
-# Main script
+#### Main script
 if [ -f "$SCRIPTFILENAME" ] ; then
     echo "Deleting old version from: $SCRIPTFILENAME"
     rm "$SCRIPTFILENAME"
 fi
-# Write new xxWatchTower script to file.
+#### Write new xxWatchTower script to file.
 echo "Installing script in $SCRIPTFILENAME."
 echo "$SCRIPTBASE" >> "$SCRIPTFILENAME"
 echo "Configuring the script..."
@@ -97,6 +93,7 @@ sed -i "s|SMTPSERVERPLACEHOLDER|$SMTPSERVER|g" "$SCRIPTFILENAME"
 sed -i "s|SMTPUSERNAMEPLACEHOLDER|$SMTPUSERNAME|g" "$SCRIPTFILENAME"
 sed -i "s|SMTPPASSWORDPLACEHOLDER|$SMTPPASSWORD|g" "$SCRIPTFILENAME"
 chmod +x "$SCRIPTFILENAME"
+echo "Done."
 unset SCRIPTBASE CURRENTFILE SCRIPTFILENAME PAMRULE FILEARRAY
 exit 0
 # END OF FILE
